@@ -24,7 +24,7 @@ class ClockPainter extends CustomPainter {
       center,
       Offset(minX, minY),
       Paint()
-        ..color = Theme.of(context).accentColor
+        ..color = Theme.of(context).colorScheme.secondary
         ..style = PaintingStyle.stroke
         ..strokeWidth = 10,
     );
@@ -65,7 +65,7 @@ class ClockPainter extends CustomPainter {
 
 // center Dots
     Paint dotPainter = Paint()
-      ..color = Theme.of(context).primaryIconTheme.color;
+      ..color = Theme.of(context).primaryIconTheme.color!;
     canvas.drawCircle(center, 24, dotPainter);
     canvas.drawCircle(
         center, 23, Paint()..color = Theme.of(context).backgroundColor);

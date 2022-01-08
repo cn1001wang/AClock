@@ -10,19 +10,19 @@ ThemeData themeData(BuildContext context) {
     primaryColor: kPrimaryColor,
     accentColor: kAccentLightColor,
     scaffoldBackgroundColor: Colors.white,
-    colorScheme: ColorScheme.light(
+    colorScheme: const ColorScheme.light(
       secondary: kSecondaryLightColor,
       // on light theme surface = Colors.white by default
     ),
     backgroundColor: Colors.white,
-    iconTheme: IconThemeData(color: kBodyTextColorLight),
-    accentIconTheme: IconThemeData(color: kAccentIconLightColor),
-    primaryIconTheme: IconThemeData(color: kPrimaryIconLightColor),
+    iconTheme: const IconThemeData(color: kBodyTextColorLight),
+    accentIconTheme: const IconThemeData(color: kAccentIconLightColor),
+    primaryIconTheme: const IconThemeData(color: kPrimaryIconLightColor),
     textTheme: GoogleFonts.latoTextTheme().copyWith(
-      bodyText1: TextStyle(color: kBodyTextColorLight),
-      bodyText2: TextStyle(color: kBodyTextColorLight),
-      headline4: TextStyle(color: kTitleTextLightColor, fontSize: 32),
-      headline1: TextStyle(color: kTitleTextLightColor, fontSize: 80),
+      bodyText1: const TextStyle(color: kBodyTextColorLight),
+      bodyText2: const TextStyle(color: kBodyTextColorLight),
+      headline4: const TextStyle(color: kTitleTextLightColor, fontSize: 32),
+      headline1: const TextStyle(color: kTitleTextLightColor, fontSize: 80),
     ),
   );
 }

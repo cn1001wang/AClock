@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
-  Body({Key key}) : super(key: key);
+  const Body({Key? key}) : super(key: key);
 
   @override
   _BodyState createState() => _BodyState();
@@ -10,8 +10,6 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("Body"),
-    );
+    return const Text("Body");
   }
 }

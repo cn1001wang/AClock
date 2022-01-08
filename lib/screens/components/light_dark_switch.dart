@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LightDarkSwitch extends StatefulWidget {
-  LightDarkSwitch({Key key}) : super(key: key);
+  const LightDarkSwitch({Key? key}) : super(key: key);
 
   @override
   _LightDarkSwitchState createState() => _LightDarkSwitchState();
