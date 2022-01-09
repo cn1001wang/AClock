@@ -16,7 +16,8 @@ class _WatchState extends State<Watch> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
-        children: [
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
           QuickBtn(),
           ClockDial(),
         ],

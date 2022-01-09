@@ -8,15 +8,9 @@ ThemeData themeData(BuildContext context) {
   return ThemeData(
     appBarTheme: appBarTheme,
     primaryColor: kPrimaryColor,
-    accentColor: kAccentLightColor,
     scaffoldBackgroundColor: Colors.white,
-    colorScheme: const ColorScheme.light(
-      secondary: kSecondaryLightColor,
-      // on light theme surface = Colors.white by default
-    ),
     backgroundColor: Colors.white,
     iconTheme: const IconThemeData(color: kBodyTextColorLight),
-    accentIconTheme: const IconThemeData(color: kAccentIconLightColor),
     primaryIconTheme: const IconThemeData(color: kPrimaryIconLightColor),
     textTheme: GoogleFonts.latoTextTheme().copyWith(
       bodyText1: const TextStyle(color: kBodyTextColorLight),
@@ -24,6 +18,10 @@ ThemeData themeData(BuildContext context) {
       headline4: const TextStyle(color: kTitleTextLightColor, fontSize: 32),
       headline1: const TextStyle(color: kTitleTextLightColor, fontSize: 80),
     ),
+    colorScheme: const ColorScheme.light(
+      secondary: kSecondaryLightColor,
+      // on light theme surface = Colors.white by default
+    ).copyWith(secondary: kAccentLightColor),
   );
 }
 
@@ -31,24 +29,23 @@ ThemeData themeData(BuildContext context) {
 ThemeData darkThemeData(BuildContext context) {
   return ThemeData.dark().copyWith(
     primaryColor: kPrimaryColor,
-    accentColor: kAccentDarkColor,
-    scaffoldBackgroundColor: Color(0xFF0D0C0E),
+    scaffoldBackgroundColor: const Color(0xFF0D0C0E),
     appBarTheme: appBarTheme,
-    colorScheme: ColorScheme.light(
+    backgroundColor: kBackgroundDarkColor,
+    iconTheme: const IconThemeData(color: kBodyTextColorDark),
+    primaryIconTheme: const IconThemeData(color: kPrimaryIconDarkColor),
+    textTheme: GoogleFonts.latoTextTheme().copyWith(
+      bodyText1: const TextStyle(color: kBodyTextColorDark),
+      bodyText2: const TextStyle(color: kBodyTextColorDark),
+      headline4: const TextStyle(color: kTitleTextDarkColor, fontSize: 32),
+      headline1: const TextStyle(color: kTitleTextDarkColor, fontSize: 80),
+    ),
+    colorScheme: const ColorScheme.light(
       secondary: kSecondaryDarkColor,
       surface: kSurfaceDarkColor,
-    ),
-    backgroundColor: kBackgroundDarkColor,
-    iconTheme: IconThemeData(color: kBodyTextColorDark),
-    accentIconTheme: IconThemeData(color: kAccentIconDarkColor),
-    primaryIconTheme: IconThemeData(color: kPrimaryIconDarkColor),
-    textTheme: GoogleFonts.latoTextTheme().copyWith(
-      bodyText1: TextStyle(color: kBodyTextColorDark),
-      bodyText2: TextStyle(color: kBodyTextColorDark),
-      headline4: TextStyle(color: kTitleTextDarkColor, fontSize: 32),
-      headline1: TextStyle(color: kTitleTextDarkColor, fontSize: 80),
-    ),
+    ).copyWith(secondary: kAccentDarkColor),
   );
 }
 
-AppBarTheme appBarTheme = AppBarTheme(color: Colors.transparent, elevation: 0);
+AppBarTheme appBarTheme =
+    const AppBarTheme(color: Colors.transparent, elevation: 0);

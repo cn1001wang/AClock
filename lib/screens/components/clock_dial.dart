@@ -30,9 +30,9 @@ class _ClockDialState extends State<ClockDial> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
+      child: SizedBox(
         width: SizeConfig.screenHeight - 40 - 80,
-        padding: const EdgeInsets.only(top: 20, bottom: 40),
+        // padding: const EdgeInsets.only(top: 20, bottom: 40),
         child: AspectRatio(
           aspectRatio: 1,
           child: Container(
@@ -47,11 +47,8 @@ class _ClockDialState extends State<ClockDial> {
                 ),
               ],
             ),
-            child: Transform.rotate(
-              angle: -pi / 2,
-              child: CustomPaint(
-                painter: ClockPainter(context, _dateTime),
-              ),
+            child: CustomPaint(
+              painter: ClockPainter(context, _dateTime),
             ),
           ),
         ),

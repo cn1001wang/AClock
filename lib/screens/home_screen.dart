@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -13,17 +15,17 @@ class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
 
   ///控制器
-  final PageController _controller = new PageController();
+  final PageController _controller = PageController();
 
   @override
   void initState() {
     super.initState();
-    setHorizontalScreen();
+    // setHorizontalScreen();
   }
 
   final _pages = [
-    FlipClock(),
-    Watch(),
+    const FlipClock(),
+    const Watch(),
   ];
 
   void setHorizontalScreen() {
@@ -34,13 +36,13 @@ class _HomeScreenState extends State<HomeScreen> {
     // }
 
     // 隐藏底部按钮栏
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top]);
 
     // 隐藏状态栏
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
 
     // 隐藏状态栏和底部按钮栏
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
     //将屏幕横过来
     SystemChrome.setPreferredOrientations(
@@ -54,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Material(
       child: PageView.builder(
         ///设置滑动模式
-        physics: new AlwaysScrollableScrollPhysics(),
+        physics: const AlwaysScrollableScrollPhysics(),
         controller: _controller,
         itemBuilder: (BuildContext context, int index) {
           return buildItemWidget(index);
@@ -65,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget buildItemWidget(int index) {
-    return new ConstrainedBox(
+    return ConstrainedBox(
       constraints: const BoxConstraints.expand(),
       child: _pages[index],
     );
