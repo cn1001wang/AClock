@@ -25,14 +25,16 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyThemeModel(),
       child: Consumer<MyThemeModel>(
-        builder: (context, theme, child) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'A Clock',
-          theme: themeData(context),
-          darkTheme: darkThemeData(context),
-          themeMode: theme.isLightTheme ? ThemeMode.light : ThemeMode.dark,
-          home: const HomeScreen(),
-        ),
+        builder: (context, theme, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'A Clock',
+            theme: themeData(context),
+            darkTheme: darkThemeData(context),
+            themeMode: theme.isLightTheme ? ThemeMode.light : ThemeMode.dark,
+            home: const HomeScreen(),
+          );
+        },
       ),
     );
   }

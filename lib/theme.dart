@@ -45,6 +45,9 @@ ThemeData darkThemeData(BuildContext context) {
       surface: kSurfaceDarkColor,
     ).copyWith(secondary: kAccentDarkColor),
   );
+
+  // 内容背景色 surface
+  // 内容填充色 kBodyTextColorDark
 }
 
 AppBarTheme appBarTheme =
