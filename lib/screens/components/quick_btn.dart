@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class QuickBtn extends StatefulWidget {
@@ -14,7 +16,7 @@ class _QuickBtnState extends State<QuickBtn> {
       alignment: Alignment.centerRight,
       child: ElevatedButton(
         onPressed: () {
-          // exit(0);
+          exit(0);
         },
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
