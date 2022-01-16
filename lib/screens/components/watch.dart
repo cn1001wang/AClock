@@ -13,14 +13,16 @@ class Watch extends StatefulWidget {
 class _WatchState extends State<Watch> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          QuickBtn(),
-          ClockDial(),
-        ],
+    return SafeArea(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            QuickBtn(),
+            ClockDial(),
+          ],
+        ),
       ),
     );
   }

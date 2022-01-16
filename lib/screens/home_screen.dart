@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // setHorizontalScreen();
+    setHorizontalScreen();
   }
 
   final _pages = [
@@ -36,10 +36,12 @@ class _HomeScreenState extends State<HomeScreen> {
     // }
 
     // 隐藏底部按钮栏
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.top]);
 
     // 隐藏状态栏
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom]);
 
     // 隐藏状态栏和底部按钮栏
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);

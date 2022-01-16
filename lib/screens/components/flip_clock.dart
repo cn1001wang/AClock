@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:aclock/screens/components/flip_num.dart';
 import 'package:flutter/material.dart';
 
@@ -9,29 +11,61 @@ class FlipClock extends StatefulWidget {
 }
 
 class _FlipClockState extends State<FlipClock> {
-  int num = 0;
+  DateTime _dateTime = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _dateTime = DateTime.now();
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FlipNumText(num, 59),
-            TextButton(
-              child: const Text("ADD"),
-              onPressed: () {
-                setState(() {
-                  if (num < 60) {
-                    num += 1;
-                  } else {
-                    num = 0;
-                  }
-                });
-              },
-            )
-          ],
+    return Center(
+      child: Container(
+        color: Colors.black,
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FlipNumText(_dateTime.hour, 59),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: _dateTime.second % 2 == 0
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: const Color(0xffb0b0b0),
+                            ),
+                          ),
+                          const SizedBox(height: 80),
+                          Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: const Color(0xffb0b0b0),
+                            ),
+                          ),
+                        ],
+                      )
+                    : Container(
+                        width: 30,
+                      ),
+              ),
+              FlipNumText(_dateTime.minute, 59),
+            ],
+          ),
         ),
       ),
     );

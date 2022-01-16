@@ -25,7 +25,6 @@ class _FlipNumTextState extends State<FlipNumText>
   @override
   void initState() {
     super.initState();
-    print("initState");
     _stateNum = widget.num;
 
     ///动画控制器，正向执行一次后再反向执行一次每次时间为450ms。
@@ -57,6 +56,7 @@ class _FlipNumTextState extends State<FlipNumText>
   Widget build(BuildContext context) {
     Color _color = const Color(0xffb0b0b0);
     Color bgColor = const Color(0xff191919);
+    const double entryV = 0.0005;
     return Container(
       padding: const EdgeInsets.all(5),
       child: Column(
@@ -64,17 +64,25 @@ class _FlipNumTextState extends State<FlipNumText>
         children: [
           Stack(
             children: <Widget>[
-              ClipRectText(_nextNum(), Alignment.topCenter,
-                  color: _color, bgColor: bgColor),
+              ClipRectText(
+                _nextNum(),
+                Alignment.topCenter,
+                color: _color,
+                bgColor: bgColor,
+              ),
 
               ///动画正向执行翻转的组件
               Transform(
                 transform: Matrix4.identity()
-                  ..setEntry(3, 2, 0.006)
+                  ..setEntry(3, 2, entryV)
                   ..rotateX(_isReversePhase ? pi / 2 : _animation.value),
                 alignment: Alignment.bottomCenter,
-                child: ClipRectText(_stateNum, Alignment.topCenter,
-                    color: _color, bgColor: bgColor),
+                child: ClipRectText(
+                  _stateNum,
+                  Alignment.topCenter,
+                  color: _color,
+                  bgColor: bgColor,
+                ),
               ),
             ],
           ),
@@ -89,11 +97,15 @@ class _FlipNumTextState extends State<FlipNumText>
               ///动画反向执行翻转的组件
               Transform(
                 transform: Matrix4.identity()
-                  ..setEntry(3, 2, 0.006)
+                  ..setEntry(3, 2, entryV)
                   ..rotateX(_isReversePhase ? -_animation.value : pi / 2),
                 alignment: Alignment.topCenter,
-                child: ClipRectText(_nextNum(), Alignment.bottomCenter,
-                    color: _color, bgColor: bgColor),
+                child: ClipRectText(
+                  _nextNum(),
+                  Alignment.bottomCenter,
+                  color: _color,
+                  bgColor: bgColor,
+                ),
               ),
             ],
           )
@@ -140,39 +152,46 @@ class ClipRectText extends StatelessWidget {
   final Color color;
   final Color bgColor;
 
-  const ClipRectText(this._value, this._alignment,
-      {Key? key, required this.bgColor, required this.color})
-      : super(key: key);
+  const ClipRectText(
+    this._value,
+    this._alignment, {
+    Key? key,
+    required this.bgColor,
+    required this.color,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    double width = 100;
     final style = TextStyle(
       fontFamily: "Din",
-      fontSize: 80,
+      fontSize: 170,
       color: color,
       fontWeight: FontWeight.w700,
     );
-    final prototypeDigit = TextPainter(text: TextSpan(text: "8", style: style))
-      ..layout();
-    final double w = prototypeDigit.size.width;
-    final double h = prototypeDigit.size.height;
-
+    final prototypeDigit = TextPainter(
+      text: TextSpan(text: "88", style: style),
+      textDirection: TextDirection.ltr,
+    )..layout();
+    const horizontalPadding = 20.0;
+    const verticalPadding = 40.0;
+    final double w = prototypeDigit.size.width + 2 * horizontalPadding;
+    // final double h = prototypeDigit.size.height;
+    String _val = _value < 10 ? "0" + _value.toString() : _value.toString();
     return ClipRect(
       child: Align(
         alignment: _alignment,
         heightFactor: 0.5,
         child: Container(
-          padding: const EdgeInsets.only(top: 10, bottom: 10),
+          padding: const EdgeInsets.symmetric(
+              horizontal: horizontalPadding, vertical: verticalPadding),
           alignment: Alignment.center,
-          width: width,
+          width: w,
           decoration: BoxDecoration(
             color: bgColor,
-            borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+            borderRadius: const BorderRadius.all(Radius.circular(24.0)),
           ),
           child: Text(
-            "$_value",
+            _val,
             style: style,
             maxLines: 1,
           ),
