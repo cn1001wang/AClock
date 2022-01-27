@@ -20,6 +20,10 @@ class _ClockDialState extends State<ClockDial> {
     super.initState();
 
     Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (!mounted) {
+        timer.cancel();
+        return;
+      }
       setState(() {
         _dateTime = DateTime.now();
       });

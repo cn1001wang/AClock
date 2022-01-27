@@ -14,16 +14,30 @@ class _WatchState extends State<Watch> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            QuickBtn(),
-            ClockDial(),
-          ],
+      child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTap: () {
+          setState(() {
+            _quickBtnVisible = !_quickBtnVisible;
+          });
+        },
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _quickBtnVisible
+                  ? const QuickBtn()
+                  : const SizedBox(
+                      height: 50,
+                    ),
+              const ClockDial(),
+            ],
+          ),
         ),
       ),
     );
   }
+
+  bool _quickBtnVisible = true;
 }

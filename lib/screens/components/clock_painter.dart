@@ -86,7 +86,7 @@ class ClockPainter extends CustomPainter {
     // double centerY = size.height / 2;
     // Offset center = Offset(centerX, centerY);
     TextStyle? textStyle =
-        Theme.of(context).textTheme.headline1?.copyWith(fontSize: 20);
+        Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 20);
     var textSpan = TextSpan(
       text: '12',
       style: textStyle,

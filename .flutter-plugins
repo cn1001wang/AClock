@@ -1,7 +1,10 @@
 # This is a generated file; do not edit or check into version control.
-path_provider=/Users/raywang/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.8/
-path_provider_android=/Users/raywang/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.11/
-path_provider_ios=/Users/raywang/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_ios-2.0.7/
-path_provider_linux=/Users/raywang/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.4/
-path_provider_macos=/Users/raywang/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.4/
-path_provider_windows=/Users/raywang/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.4/
+path_provider=/Users/raywang/development/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-2.0.8/
+path_provider_android=/Users/raywang/development/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider_android-2.0.11/
+path_provider_ios=/Users/raywang/development/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider_ios-2.0.7/
+path_provider_linux=/Users/raywang/development/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider_linux-2.1.5/
+path_provider_macos=/Users/raywang/development/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider_macos-2.0.5/
+path_provider_windows=/Users/raywang/development/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider_windows-2.0.5/
+wakelock=/Users/raywang/development/flutter/.pub-cache/hosted/pub.flutter-io.cn/wakelock-0.6.0+1/
+wakelock_macos=/Users/raywang/development/flutter/.pub-cache/hosted/pub.flutter-io.cn/wakelock_macos-0.4.0/
+wakelock_web=/Users/raywang/development/flutter/.pub-cache/hosted/pub.flutter-io.cn/wakelock_web-0.4.0/

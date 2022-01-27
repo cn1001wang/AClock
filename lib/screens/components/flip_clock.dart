@@ -18,6 +18,10 @@ class _FlipClockState extends State<FlipClock> {
     super.initState();
 
     Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (!mounted) {
+        timer.cancel();
+        return;
+      }
       setState(() {
         _dateTime = DateTime.now();
       });
@@ -26,47 +30,43 @@ class _FlipClockState extends State<FlipClock> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        color: Colors.black,
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              FlipNumText(_dateTime.hour, 59),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: _dateTime.second % 2 == 0
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 30,
-                            width: 30,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: const Color(0xffb0b0b0),
-                            ),
-                          ),
-                          const SizedBox(height: 80),
-                          Container(
-                            height: 30,
-                            width: 30,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: const Color(0xffb0b0b0),
-                            ),
-                          ),
-                        ],
-                      )
-                    : Container(
+    return Container(
+      color: Colors.black,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          FlipNumText(_dateTime.hour, 59),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: _dateTime.second % 2 == 0
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 30,
                         width: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: const Color(0xffb0b0b0),
+                        ),
                       ),
-              ),
-              FlipNumText(_dateTime.minute, 59),
-            ],
+                      const SizedBox(height: 80),
+                      Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: const Color(0xffb0b0b0),
+                        ),
+                      ),
+                    ],
+                  )
+                : Container(
+                    width: 30,
+                  ),
           ),
-        ),
+          FlipNumText(_dateTime.minute, 59),
+        ],
       ),
     );
   }

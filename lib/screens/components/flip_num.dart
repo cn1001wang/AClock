@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:aclock/size_config.dart';
 import 'package:flutter/material.dart';
 
 class FlipNumText extends StatefulWidget {
@@ -164,7 +165,7 @@ class ClipRectText extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = TextStyle(
       fontFamily: "Din",
-      fontSize: 170,
+      fontSize: getProportionateScreenWidth(170.0),
       color: color,
       fontWeight: FontWeight.w700,
     );
@@ -172,23 +173,23 @@ class ClipRectText extends StatelessWidget {
       text: TextSpan(text: "88", style: style),
       textDirection: TextDirection.ltr,
     )..layout();
-    const horizontalPadding = 20.0;
-    const verticalPadding = 40.0;
+    final double horizontalPadding = getProportionateScreenWidth(20.0);
+    final double verticalPadding = getProportionateScreenWidth(40.0);
     final double w = prototypeDigit.size.width + 2 * horizontalPadding;
-    // final double h = prototypeDigit.size.height;
     String _val = _value < 10 ? "0" + _value.toString() : _value.toString();
     return ClipRect(
       child: Align(
         alignment: _alignment,
         heightFactor: 0.5,
         child: Container(
-          padding: const EdgeInsets.symmetric(
+          padding: EdgeInsets.symmetric(
               horizontal: horizontalPadding, vertical: verticalPadding),
           alignment: Alignment.center,
           width: w,
           decoration: BoxDecoration(
             color: bgColor,
-            borderRadius: const BorderRadius.all(Radius.circular(24.0)),
+            borderRadius: BorderRadius.all(
+                Radius.circular(getProportionateScreenWidth(24.0))),
           ),
           child: Text(
             _val,
